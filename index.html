@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://unpkg.com/vue-typer/dist/vue-typer.min.js"></script>
+    <script src="./mark-logion.js"></script>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      #root {
+        height: 100vh;
+        background: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+      }
+      .header {
+        padding-top: 80px;
+        text-align: center;
+        height: 140px;
+      }
+      .title {
+        color: white;
+        font-size: 3em;
+        margin: 0 !important;
+        font-family: 'Baloo Bhaijaan', cursive;
+        text-transform: uppercase;
+        transform: translateY(20px);
+        letter-spacing: 0.25em;
+      }
+
+      .title .first-letter {
+        display: inline-block;
+        -webkit-transform: translate(-80%, 0) scale(3) rotate(-15deg);
+        -moz-transform: translate(-80%, 0) scale(3) rotate(-15deg);
+        -ms-transform: translate(-80%, 0) scale(3) rotate(-15deg);
+        transform: translate(-80%, 0) scale(3) rotate(-15deg);
+        -webkit-transition: all 0.05s;
+        -moz-transition: all 0.05s;
+        -ms-transition: all 0.05s;
+        transition: all 0.05s;
+      }
+
+      .header:hover .first-letter {
+        -webkit-transform: translate(-80%, -10px) scale(3) rotate(15deg);
+        -moz-transform: translate(-80%, -10px) scale(3) rotate(15deg);
+        -ms-transform: translate(-80%, -10px) scale(3) rotate(15deg);
+        transform: translate(-80%, -10px) scale(3) rotate(15deg);
+      }
+
+      .content {
+        width: calc(100% - 240px);
+        margin: 40px auto 0;
+        text-align: center;
+      }
+
+      .textWrap {
+        margin: 0 auto;
+        font-size: 2em;
+      }
+      .textWrap .char {
+        color: #fff;
+      }
+    </style>
+    <title>贾学</title>
+  </head>
+  <body>
+    <div id="root">
+      <header class="header">
+        <h2 class="title"><span class="first-letter">贾</span>学</h2>
+      </header>
+      <main class="content">
+        <section class="textWrap">
+          <vue-typer :text="markLogion"></vue-typer>
+        </section>
+      </main>
+    </div>
+  </body>
+
+  <script>
+    const markLogionList = markLogion.split('\n').filter(text => text)
+    var VueTyper = window.VueTyper.VueTyper
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        VueTyper
+      },
+      data: function() {
+        return {
+          markLogion: markLogionList
+        }
+      },
+      mounted() {}
+    })
+  </script>
+</html>
